@@ -1,0 +1,108 @@
+{
+    "products": [
+        {
+            "id": "661001a0bd1c5ba9e8d528e4",
+            "name": "Robot Xiaomi All in one",
+            "price": 2300,
+            "description": "Một siêu phẩm của hãng công nghệ Xiaomi",
+            "hide": false,
+            "category": {
+                "_id": "66100158bd1c5ba9e8d528e1",
+                "name": "Đồ chơi công nghệ",
+                "slug": "do-choi-cong-nghe",
+                "description": "Những danh mục đồ chơi công nghệ",
+                "hide": false,
+                "products": [
+                    "661001a0bd1c5ba9e8d528e4",
+                    "661001d8bd1c5ba9e8d528e8"
+                ],
+                "createdAt": "2024-04-05T13:49:12.301Z",
+                "updatedAt": "2024-04-05T13:51:20.541Z"
+            },
+            "discountPercentage": 0,
+            "rating": 5,
+            "stock": 0,
+            "brand": "No brand",
+            "createdAt": "2024-04-05T13:50:24.781Z",
+            "updatedAt": "2024-04-05T13:50:24.781Z"
+        },
+        {
+            "id": "661001d8bd1c5ba9e8d528e8",
+            "name": "Đèn led trang trí VGA",
+            "price": 1200,
+            "description": "Đèn led RGB trang trí cho VGA trông thật cool ngầu",
+            "hide": false,
+            "category": {
+                "_id": "66100158bd1c5ba9e8d528e1",
+                "name": "Đồ chơi công nghệ",
+                "slug": "do-choi-cong-nghe",
+                "description": "Những danh mục đồ chơi công nghệ",
+                "hide": false,
+                "products": [
+                    "661001a0bd1c5ba9e8d528e4",
+                    "661001d8bd1c5ba9e8d528e8"
+                ],
+                "createdAt": "2024-04-05T13:49:12.301Z",
+                "updatedAt": "2024-04-05T13:51:20.541Z"
+            },
+            "discountPercentage": 0,
+            "rating": 5,
+            "stock": 0,
+            "brand": "No brand",
+            "createdAt": "2024-04-05T13:51:20.434Z",
+            "updatedAt": "2024-04-05T13:51:20.434Z"
+        },
+        {
+            "id": "6610024abd1c5ba9e8d528ee",
+            "name": "Tivi Samsung Oled 45inch 4K",
+            "price": 4900,
+            "description": "Tivi model mới với 190 triệu màu, tần số 1000hz",
+            "hide": false,
+            "category": {
+                "_id": "66100121bd1c5ba9e8d528db",
+                "name": "Đồ điện tử",
+                "slug": "do-dien-tu",
+                "description": "Những danh mục đồ điện tử",
+                "hide": false,
+                "products": [
+                    "6610024abd1c5ba9e8d528ee",
+                    "6610027dbd1c5ba9e8d528f2"
+                ],
+                "createdAt": "2024-04-05T13:48:17.570Z",
+                "updatedAt": "2024-04-05T13:54:05.118Z"
+            },
+            "discountPercentage": 0,
+            "rating": 5,
+            "stock": 0,
+            "brand": "No brand",
+            "createdAt": "2024-04-05T13:53:14.621Z",
+            "updatedAt": "2024-04-05T13:53:14.621Z"
+        },
+        {
+            "id": "6610027dbd1c5ba9e8d528f2",
+            "name": "Màn hình AOC 27G2 144hz IPS FullHD",
+            "price": 4900,
+            "description": "Tần số quét cao, đỗ trễ 1ms",
+            "hide": false,
+            "category": {
+                "_id": "66100121bd1c5ba9e8d528db",
+                "name": "Đồ điện tử",
+                "slug": "do-dien-tu",
+                "description": "Những danh mục đồ điện tử",
+                "hide": false,
+                "products": [
+                    "6610024abd1c5ba9e8d528ee",
+                    "6610027dbd1c5ba9e8d528f2"
+                ],
+                "createdAt": "2024-04-05T13:48:17.570Z",
+                "updatedAt": "2024-04-05T13:54:05.118Z"
+            },
+            "discountPercentage": 0,
+            "rating": 5,
+            "stock": 0,
+            "brand": "No brand",
+            "createdAt": "2024-04-05T13:54:05.061Z",
+            "updatedAt": "2024-04-05T13:54:05.061Z"
+        }
+    ]
+}
