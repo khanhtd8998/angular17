@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ProductService } from '../../../../services/product.service';
 import { Product } from '../../../../interfaces/product';
 import { ActivatedRoute, Router } from '@angular/router';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-product-edit',
@@ -16,7 +17,7 @@ export class ProductEditComponent {
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
-    private navigate: Router
+    private navigate: Router,
   ){
     this.route.paramMap.subscribe((params: any) => {
       const id = String(params.get('id'));
@@ -24,23 +25,31 @@ export class ProductEditComponent {
         (res: any) => {
           // this.product = res.data;
           this.product = res;
-          console.log(this.product);
-          console.log(res);
         }
       )
     })
   }
   handleEditProduct (form: NgForm) {
-    console.log(form.value);
-    this.productService.editProduct(this.product._id,form.value).subscribe(
-      {
-        next: (data: any) => {
-          alert("Success!");
-          form.reset()
-          this.navigate.navigate(['/admin/products/list'])
-        },
-        error: (err: any) => console.log(err.message)
-      }
+    this.productService.editProduct(this.product._id,form.value).subscribe({
+      next: () => {
+        form.reset()
+        setTimeout(() => {
+          this.navigate.navigate(['/admin/products/list/'])
+        }, 1000)
+        swal({
+          title: "Thành công",
+          text: "Sản phẩm đã được cập nhật",
+          icon: "success",
+          buttons: ["OK"],
+          timer: 2000,
+        })
+      },
+      error: (err: any) => swal({
+        title: "Cập nhật thất bại",
+        icon: "warning",
+        dangerMode: true,
+      })
+    }
     )
   }
 }

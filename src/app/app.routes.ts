@@ -36,5 +36,6 @@ export const routes: Routes = [
             { path: "products/edit/:id", component: ProductEditComponent }
         ]
     },
-    { path: "**", component: NotfoundComponent }
+    { path: "notfound", component: NotfoundComponent },
+    { path: "**", redirectTo: "/notfound" },
 ];

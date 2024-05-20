@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^17.3.0",
+    "@angular/animations": "^17.3.9",
     "@angular/common": "^17.3.0",
     "@angular/compiler": "^17.3.0",
     "@angular/core": "^17.3.0",
@@ -21,7 +21,10 @@
     "@angular/router": "^17.3.0",
     "concurrently": "^8.2.2",
     "json-server": "^1.0.0-beta.0",
+    "ngx-toastr": "^18.0.0",
+    "primeng": "^17.17.0",
     "rxjs": "~7.8.0",
+    "sweetalert": "^2.1.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ScrollPositionService } from '../../../services/scroll/scroll-position.service';
 
 @Component({
   selector: 'app-about',
@@ -8,5 +9,8 @@ import { Component } from '@angular/core';
   styleUrl: './about.component.css'
 })
 export class AboutComponent {
-
+  scrollServie = inject(ScrollPositionService)
+  ngOnInit(): void {
+    this.scrollServie.scrollToTop()
+  }
 }
