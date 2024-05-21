@@ -10,42 +10,58 @@
               fill="currentColor" />
           </svg>
         </a>
+        <div class="hidden md:block">
+          <nav class="" aria-label="Global">
+            <ul class="flex items-center gap-10 text-md">
+              <li>
+                <a class="text-gray-500 transition hover:text-gray-500/75" routerLink="/home"> Home </a>
+              </li>
+  
+              <li>
+                <a class="text-gray-500 transition hover:text-gray-500/75" routerLink="/product-page"> Product </a>
+              </li>
+
+              <li>
+                <a class="text-gray-500 transition hover:text-gray-500/75" routerLink="/cart"> Cart </a>
+              </li>
+              
+              <li>
+                <a class="text-gray-500 transition hover:text-gray-500/75" routerLink="/about"> About </a>
+              </li>
+  
+              <li>
+                <a class="text-gray-500 transition hover:text-gray-500/75" routerLink="/contact"> Contact </a>
+              </li>
+              
+            </ul>
+          </nav>
+        </div>
       </div>
 
-      <div class="hidden md:block">
-        <nav aria-label="Global">
-          <ul class="flex items-center gap-6 text-md">
-            <li>
-              <a class="text-gray-500 transition hover:text-gray-500/75" routerLink="/home"> Home </a>
-            </li>
-
-            <li>
-              <a class="text-gray-500 transition hover:text-gray-500/75" routerLink="/product"> Product </a>
-            </li>
-
-            <li>
-              <a class="text-gray-500 transition hover:text-gray-500/75" routerLink="/about"> About </a>
-            </li>
-
-            <li>
-              <a class="text-gray-500 transition hover:text-gray-500/75" routerLink="/contact"> Contact </a>
-            </li>
-
-            <li>
-              <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Blog </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-
-      <div class="flex items-center gap-4">
-        <div class="sm:flex sm:gap-4">
-          <a class="rounded-md bg-[#3b82f6] hover:bg-blue-700 px-5 py-2.5 text-sm font-medium text-white shadow" routerLink="/login">
+      <div class="flex items-center gap-1">
+        <div class='flex items-center md:w-[20rem] justify-end from-teal-10 bg-gradient-to-br'>
+          <form action="" class="relative flex">
+            <input type="search"
+              class="text- peer cursor-pointer relative z-10 h-11 w-11 rounded-lg bg-transparent  pr-10 outline-none focus:rounded-r-none focus:w-full focus:cursor-text focus:border-taupeGray focus:px-3"
+              placeholder="Search..." />
+            <button
+              class="absolute top-0 right-0 bottom-0 my-auto h-11 w-11 px-3 bg-white rounded-lg peer-focus:relative peer-focus:rounded-l-none">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 50 50">
+                <path
+                  d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z">
+                </path>
+              </svg>
+            </button>
+          </form>
+        </div>
+        <div class="sm:flex sm:gap-1">
+          <a class="rounded-md bg-[#3b82f6] hover:bg-blue-700 px-5 py-2 text-sm font-medium text-white shadow"
+            routerLink="/login">
             Login
           </a>
 
           <div class="hidden sm:flex">
-            <a class="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-[#3b82f6] hover:text-blue-700" href="#">
+            <a class="rounded-md bg-gray-100 px-5 py-2 text-sm font-medium text-[#3b82f6] hover:text-blue-700" routerLink="/register">
               Register
             </a>
           </div>

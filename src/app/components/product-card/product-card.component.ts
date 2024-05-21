@@ -17,6 +17,6 @@ export class ProductCardComponent {
   product!: Product;
   toastr = inject(ToastrService)
   handleAddToCart() {
-      this.toastr.success('Thêm giỏ hàng thành công', '')
+      this.toastr.success('Add to cart successfully', '')
   }
 }

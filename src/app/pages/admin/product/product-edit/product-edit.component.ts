@@ -4,16 +4,24 @@ import { ProductService } from '../../../../services/product.service';
 import { Product } from '../../../../interfaces/product';
 import { ActivatedRoute, Router } from '@angular/router';
 import swal from 'sweetalert';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-product-edit',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, NgIf],
   templateUrl: './product-edit.component.html',
   styleUrl: './product-edit.component.css'
 })
 export class ProductEditComponent {
-  product!: Product
+  product: Product = {
+    name: '',
+    price: 0,
+    description: '',
+    image: '',
+    category: '',
+    hide: false
+  }
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
@@ -25,12 +33,13 @@ export class ProductEditComponent {
         (res: any) => {
           // this.product = res.data;
           this.product = res;
+          console.log(res);
         }
       )
     })
   }
   handleEditProduct (form: NgForm) {
-    this.productService.editProduct(this.product._id,form.value).subscribe({
+    this.productService.editProduct(this.product.id,form.value).subscribe({
       next: () => {
         form.reset()
         setTimeout(() => {

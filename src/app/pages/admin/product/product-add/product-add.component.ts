@@ -15,7 +15,14 @@ import swal from 'sweetalert';
 })
 export class ProductAddComponent {
   toastr = inject(ToastrService)
-  product!: Product
+  product: Product = {
+    name: '',
+    price: 0,
+    description: '',
+    image: '',
+    category: '',
+    hide: false
+  }
   constructor(
     private productService: ProductService,
     private router: Router,
@@ -37,7 +44,13 @@ export class ProductAddComponent {
               timer: 2000,
             })
           },
-          error: (err: any) => this.toastr.error("Thêm sản phẩm thất bại", err.message)
+          error: (err: any) => {
+            swal({
+              title: "Lỗi server",
+              icon: "warning",
+              dangerMode: true,
+            })
+          }
         }
       )
     }

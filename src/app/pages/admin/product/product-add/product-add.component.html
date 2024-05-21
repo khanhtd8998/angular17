@@ -4,43 +4,72 @@
         <div class="grid grid-cols-2 gap-2">
             <div class="mb-5">
                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                <input type="text" name="name" ngModel #name="ngModel" minlength="3" maxlength="8"
+                <input type="text" name="name" ngModel #name="ngModel" minlength="6"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required />
                 <div *ngIf="name.invalid && (name?.dirty || name?.touched)">
-                    <span *ngIf="name.errors?.['minLength']" class="text-red-600">Tối thiểu 6 ký tự</span>
-                    <span *ngIf="name.errors?.['maxLength']" class="text-red-600">Tối thiểu 8 ký tự</span>
-                    <span *ngIf="name.errors?.['required']" class="text-red-600">Không được để
-                        trống</span>
+                    <span *ngIf="name.errors?.['minlength']" class="text-red-600">Dữ liệu tối thiểu 6 ký tự</span>
+                    <span *ngIf="name.errors?.['required']" class="text-red-600">Không để
+                        trống dữ liệu</span>
                 </div>
             </div>
             <div class="mb-5">
                 <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
-                <input type="number" name="price" ngModel
+                <input type="number" name="price" ngModel min="0" #price="ngModel"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required />
+                <div *ngIf="price.invalid && (price?.dirty || price?.touched)">
+                    <span *ngIf="price.errors?.['min']" class="text-red-600">Không nhập dữ liệu bé hơn 0</span>
+                    <span *ngIf="price.errors?.['required']" class="text-red-600">Không để
+                        trống dữ liệu</span>
+                </div>
             </div>
         </div>
         <div class="grid grid-cols-2 gap-2">
             <div class="mb-5">
-                <label for="name"
+                <label for="description"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                <input type="text" name="description" ngModel
+                <input type="text" name="description" ngModel #description="ngModel"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required />
+                <div *ngIf="description.invalid && (description?.dirty || description?.touched)">
+                    <span *ngIf="description.errors?.['required']" class="text-red-600">Không để
+                        trống dữ liệu</span>
+                </div>
             </div>
             <div class="mb-5">
                 <label for="category"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                <select id="countries"
-                    ngModel
-                    name="category"
+                <select id="countries" ngModel name="category" #category="ngModel" required
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option value="Apple">Apple</option>
                     <option value="Samsung">Samsung</option>
                     <option value="LG">LG</option>
                     <option value="Xiaomi">Xiaomi</option>
                 </select>
+                <div *ngIf="category.invalid && (category.dirty || category.touched)">
+                    <span *ngIf="category.errors?.['required']" class="text-red-600">Không để trống dữ liệu</span>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+            <div class="mb-5">
+                <label for="image"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
+                <input type="text" name="description" ngModel #image="ngModel"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    required />
+                <div *ngIf="image.invalid && (image?.dirty || image?.touched)">
+                    <span *ngIf="image.errors?.['required']" class="text-red-600">Không để
+                        trống dữ liệu</span>
+                </div>
+            </div>
+            <div class="mb-5 hidden">
+                <label for="hide"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
+                <input type="text" name="hide" [(ngModel)]="product.hide"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                     />
             </div>
         </div>
         <button [disabled]="formAddProduct.invalid" type="submit"

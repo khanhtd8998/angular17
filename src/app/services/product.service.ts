@@ -8,7 +8,7 @@ import { Product } from '../interfaces/product';
 })
 export class ProductService {
   // API = "https://nodejs-project-khanhs-projects-8739fadf.vercel.app/products"
-  API = "https://65bc647852189914b5bdd8b1.mockapi.io/products"
+  API = "http://localhost:3000/products"
   http = inject(HttpClient)
   renderProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.API)

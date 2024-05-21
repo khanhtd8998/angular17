@@ -11,6 +11,12 @@ import { ProductEditComponent } from './pages/admin/product/product-edit/product
 import { AboutComponent } from './pages/user/about/about.component';
 import { ContactComponent } from './pages/user/contact/contact.component';
 import { LoginComponent } from './pages/user/login/login.component';
+import { RegisterComponent } from './pages/user/register/register.component';
+import { ForgotPasswordComponent } from './pages/user/forgot-password/forgot-password.component';
+import { CartComponent } from './pages/user/cart/cart.component';
+import { CheckoutComponent } from './pages/user/checkout/checkout.component';
+import { CheckoutDoneComponent } from './pages/user/checkout-done/checkout-done.component';
+import { ProductPageComponent } from './pages/user/product-page/product-page.component';
 
 export const routes: Routes = [
     {
@@ -19,12 +25,18 @@ export const routes: Routes = [
         children: [
             { path: "", redirectTo: "home", pathMatch: "full"},
             { path: "home", component: HomeComponent },
+            { path: "product-page", component: ProductPageComponent },
             { path: "products/:id", component: ProductDetailComponent },
             { path: "about", component: AboutComponent },
             { path: "contact", component: ContactComponent },
             { path: "login", component: LoginComponent },
+            { path: "register", component: RegisterComponent },
+            { path: "forgot-password", component: ForgotPasswordComponent },
+            { path: "cart", component: CartComponent },
+            { path: "checkout", component: CheckoutComponent },
         ]
     },
+    { path: "checkout/done", component: CheckoutDoneComponent },
     {
         path: "admin",
         component: AdminLayoutComponent,

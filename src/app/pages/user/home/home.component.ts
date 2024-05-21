@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
       next: (res: any) => {
         // this.products = res.data
         this.products = res
+        console.log(res);
       },
       error: (err: any) => this.navigate.navigate(['/**'])
     })

@@ -38,7 +38,7 @@ export class ProductListComponent implements OnInit {
     })
   }
   showProductDetail(id: string | undefined): void {
-    const showDetail = document.querySelector('.btn-show')
+    const showDetail = document.querySelector('.show-product-detail')
     showDetail?.classList.toggle('show-detail')
     this.productService.renderProduct(id).subscribe(
       (res: any) => {
@@ -59,7 +59,7 @@ export class ProductListComponent implements OnInit {
         if (willDelete) {
           this.productService.deleteProduct(id).subscribe({
             next: () => {
-              this.products = this.products.filter((item: Product) => item._id != id)
+              this.products = this.products.filter((item: Product) => item.id != id)
               swal("Xóa sản phẩm thành công", {
                 icon: "success",
                 buttons: [''],

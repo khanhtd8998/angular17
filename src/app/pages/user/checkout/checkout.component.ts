@@ -1,16 +1,16 @@
 import { Component, inject } from '@angular/core';
-import { ScrollPositionService } from '../../../services/scroll/scroll-position.service';
 import { RouterLink } from '@angular/router';
+import { ScrollPositionService } from '../../../services/scroll/scroll-position.service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-checkout',
   standalone: true,
   imports: [RouterLink],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  templateUrl: './checkout.component.html',
+  styleUrl: './checkout.component.css'
 })
-export class LoginComponent {
-  
+export class CheckoutComponent {
+
   scrollService = inject(ScrollPositionService)
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.

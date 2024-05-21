@@ -1,108 +1,58 @@
 {
-    "products": [
-        {
-            "id": "661001a0bd1c5ba9e8d528e4",
-            "name": "Robot Xiaomi All in one",
-            "price": 2300,
-            "description": "Một siêu phẩm của hãng công nghệ Xiaomi",
-            "hide": false,
-            "category": {
-                "_id": "66100158bd1c5ba9e8d528e1",
-                "name": "Đồ chơi công nghệ",
-                "slug": "do-choi-cong-nghe",
-                "description": "Những danh mục đồ chơi công nghệ",
-                "hide": false,
-                "products": [
-                    "661001a0bd1c5ba9e8d528e4",
-                    "661001d8bd1c5ba9e8d528e8"
-                ],
-                "createdAt": "2024-04-05T13:49:12.301Z",
-                "updatedAt": "2024-04-05T13:51:20.541Z"
-            },
-            "discountPercentage": 0,
-            "rating": 5,
-            "stock": 0,
-            "brand": "No brand",
-            "createdAt": "2024-04-05T13:50:24.781Z",
-            "updatedAt": "2024-04-05T13:50:24.781Z"
-        },
-        {
-            "id": "661001d8bd1c5ba9e8d528e8",
-            "name": "Đèn led trang trí VGA",
-            "price": 1200,
-            "description": "Đèn led RGB trang trí cho VGA trông thật cool ngầu",
-            "hide": false,
-            "category": {
-                "_id": "66100158bd1c5ba9e8d528e1",
-                "name": "Đồ chơi công nghệ",
-                "slug": "do-choi-cong-nghe",
-                "description": "Những danh mục đồ chơi công nghệ",
-                "hide": false,
-                "products": [
-                    "661001a0bd1c5ba9e8d528e4",
-                    "661001d8bd1c5ba9e8d528e8"
-                ],
-                "createdAt": "2024-04-05T13:49:12.301Z",
-                "updatedAt": "2024-04-05T13:51:20.541Z"
-            },
-            "discountPercentage": 0,
-            "rating": 5,
-            "stock": 0,
-            "brand": "No brand",
-            "createdAt": "2024-04-05T13:51:20.434Z",
-            "updatedAt": "2024-04-05T13:51:20.434Z"
-        },
-        {
-            "id": "6610024abd1c5ba9e8d528ee",
-            "name": "Tivi Samsung Oled 45inch 4K",
-            "price": 4900,
-            "description": "Tivi model mới với 190 triệu màu, tần số 1000hz",
-            "hide": false,
-            "category": {
-                "_id": "66100121bd1c5ba9e8d528db",
-                "name": "Đồ điện tử",
-                "slug": "do-dien-tu",
-                "description": "Những danh mục đồ điện tử",
-                "hide": false,
-                "products": [
-                    "6610024abd1c5ba9e8d528ee",
-                    "6610027dbd1c5ba9e8d528f2"
-                ],
-                "createdAt": "2024-04-05T13:48:17.570Z",
-                "updatedAt": "2024-04-05T13:54:05.118Z"
-            },
-            "discountPercentage": 0,
-            "rating": 5,
-            "stock": 0,
-            "brand": "No brand",
-            "createdAt": "2024-04-05T13:53:14.621Z",
-            "updatedAt": "2024-04-05T13:53:14.621Z"
-        },
-        {
-            "id": "6610027dbd1c5ba9e8d528f2",
-            "name": "Màn hình AOC 27G2 144hz IPS FullHD",
-            "price": 4900,
-            "description": "Tần số quét cao, đỗ trễ 1ms",
-            "hide": false,
-            "category": {
-                "_id": "66100121bd1c5ba9e8d528db",
-                "name": "Đồ điện tử",
-                "slug": "do-dien-tu",
-                "description": "Những danh mục đồ điện tử",
-                "hide": false,
-                "products": [
-                    "6610024abd1c5ba9e8d528ee",
-                    "6610027dbd1c5ba9e8d528f2"
-                ],
-                "createdAt": "2024-04-05T13:48:17.570Z",
-                "updatedAt": "2024-04-05T13:54:05.118Z"
-            },
-            "discountPercentage": 0,
-            "rating": 5,
-            "stock": 0,
-            "brand": "No brand",
-            "createdAt": "2024-04-05T13:54:05.061Z",
-            "updatedAt": "2024-04-05T13:54:05.061Z"
-        }
-    ]
+  "products": [
+    {
+      "name": "Tivi Samsung 4K",
+      "price": 86,
+      "description": "description 3",
+      "category": "Samsung",
+      "image": "https://picsum.photos/200",
+      "hide": false,
+      "id": "3"
+    },
+    {
+      "name": "name 4",
+      "price": 46,
+      "description": "description 4",
+      "category": "Samsung",
+      "image": "https://picsum.photos/200",
+      "hide": false,
+      "id": "4"
+    },
+    {
+      "name": "name 5",
+      "price": 94,
+      "description": "description 5",
+      "category": "category 5",
+      "hide": false,
+      "image": "https://picsum.photos/200",
+      "id": "5"
+    },
+    {
+      "name": "name 6",
+      "price": 10,
+      "description": "description 6",
+      "category": "category 6",
+      "hide": false,
+      "image": "https://picsum.photos/200",
+      "id": "6"
+    },
+    {
+      "name": "name 8",
+      "price": 97,
+      "description": "description 8",
+      "category": "Apple",
+      "image": "https://picsum.photos/200",
+      "hide": false,
+      "id": "8"
+    },
+    {
+      "name": "123123",
+      "price": 890,
+      "description": "1231231",
+      "category": "Samsung",
+      "image": "https://img.vn/uploads/thuvien/img-renderacc-aeon-1-jpeg-20230926175923hJd6oSpnqQ.jpeg",
+      "hide": true,
+      "id": "b059"
+    }
+  ]
 }

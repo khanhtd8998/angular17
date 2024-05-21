@@ -1,15 +1,15 @@
 import { Component, inject } from '@angular/core';
-import { ScrollPositionService } from '../../../services/scroll/scroll-position.service';
 import { RouterLink } from '@angular/router';
+import { ScrollPositionService } from '../../../services/scroll/scroll-position.service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-cart',
   standalone: true,
   imports: [RouterLink],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  templateUrl: './cart.component.html',
+  styleUrl: './cart.component.css'
 })
-export class LoginComponent {
+export class CartComponent {
   
   scrollService = inject(ScrollPositionService)
   ngOnInit(): void {
