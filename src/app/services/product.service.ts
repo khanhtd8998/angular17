@@ -7,8 +7,9 @@ import { Product } from '../interfaces/product';
   providedIn: 'root'
 })
 export class ProductService {
-  // API = "https://nodejs-project-khanhs-projects-8739fadf.vercel.app/products"
-  API = "http://localhost:3000/products"
+  API = "https://nodejs-project-8998.vercel.app/products"
+  // API = "http://localhost:3000/products"
+  // API = "http://localhost:8000/products"
   http = inject(HttpClient)
   renderProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.API)
@@ -28,5 +29,9 @@ export class ProductService {
 
   editProduct(id: string | undefined, product: Product): Observable<Product> {
     return this.http.put<Product>(this.API + "/" +  id, product)
+  }
+
+  searchProduct(text: string | undefined): Observable<Product> {
+    return this.http.get<Product>(this.API + "?name=" + text)
   }
 }

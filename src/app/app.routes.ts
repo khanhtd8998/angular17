@@ -23,9 +23,9 @@ export const routes: Routes = [
         path: "",
         component: UserLayoutComponent,
         children: [
-            { path: "", redirectTo: "home", pathMatch: "full"},
+            { path: "", component: HomeComponent },
             { path: "home", component: HomeComponent },
-            { path: "product-page", component: ProductPageComponent },
+            { path: "product-page/:search", component: ProductPageComponent },
             { path: "products/:id", component: ProductDetailComponent },
             { path: "about", component: AboutComponent },
             { path: "contact", component: ContactComponent },

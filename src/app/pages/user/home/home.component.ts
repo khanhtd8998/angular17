@@ -22,8 +22,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.productService.renderProducts().subscribe({
       next: (res: any) => {
-        // this.products = res.data
-        this.products = res
+        this.products = res.data
         console.log(res);
       },
       error: (err: any) => this.navigate.navigate(['/**'])

@@ -4,11 +4,11 @@
         <div class="grid grid-cols-2 gap-2">
             <div class="mb-5">
                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                <input type="text" name="name" ngModel #name="ngModel" minlength="6"
+                <input type="text" name="name" [(ngModel)]="product.name" #name="ngModel" minlength="3"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required />
                 <div *ngIf="name.invalid && (name?.dirty || name?.touched)">
-                    <span *ngIf="name.errors?.['minlength']" class="text-red-600">Dữ liệu tối thiểu 6 ký tự</span>
+                    <span *ngIf="name.errors?.['minlength']" class="text-red-600">Dữ liệu tối thiểu 3 ký tự</span>
                     <span *ngIf="name.errors?.['required']" class="text-red-600">Không để
                         trống dữ liệu</span>
                 </div>
@@ -29,7 +29,7 @@
             <div class="mb-5">
                 <label for="description"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                <input type="text" name="description" ngModel #description="ngModel"
+                <input type="text" name="description" ngModel [(ngModel)]="product.description" #description="ngModel"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required />
                 <div *ngIf="description.invalid && (description?.dirty || description?.touched)">
@@ -40,12 +40,9 @@
             <div class="mb-5">
                 <label for="category"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                <select id="countries" ngModel name="category" #category="ngModel" required
+                <select ngModel name="category" #category="ngModel" required
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="Apple">Apple</option>
-                    <option value="Samsung">Samsung</option>
-                    <option value="LG">LG</option>
-                    <option value="Xiaomi">Xiaomi</option>
+                    <option *ngFor="let item of categories" [ngValue]="item._id">{{item.name}}</option>
                 </select>
                 <div *ngIf="category.invalid && (category.dirty || category.touched)">
                     <span *ngIf="category.errors?.['required']" class="text-red-600">Không để trống dữ liệu</span>
@@ -54,9 +51,8 @@
         </div>
         <div class="grid grid-cols-2 gap-2">
             <div class="mb-5">
-                <label for="image"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
-                <input type="text" name="description" ngModel #image="ngModel"
+                <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
+                <input type="text" name="image" ngModel [(ngModel)]="product.image" #image="ngModel"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required />
                 <div *ngIf="image.invalid && (image?.dirty || image?.touched)">
@@ -65,12 +61,60 @@
                 </div>
             </div>
             <div class="mb-5 hidden">
-                <label for="hide"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
+                <label for="hide" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hide</label>
                 <input type="text" name="hide" [(ngModel)]="product.hide"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </div>
+        </div>
+        <div class="grid grid-cols-4 gap-2">
+            <div class="mb-5">
+                <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand</label>
+                <input type="text" minLength="3" name="brand" ngModel [(ngModel)]="product.brand" #brand="ngModel"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    required />
+                <div *ngIf="brand.invalid && (brand?.dirty || brand?.touched)">
+                    <span *ngIf="brand.errors?.['required']" class="text-red-600">Không để
+                        trống dữ liệu</span>
+                    <span *ngIf="brand.errors?.['minlength']" class="text-red-600">Dữ liệu tối thiểu 3 ký tự</span>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <label for="stock" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Stock</label>
+                <input type="number" name="stock" min="0" ngModel [(ngModel)]="product.stock" #stock="ngModel"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                      />
+                <div>
+                    <span *ngIf="stock.errors?.['min']" class="text-red-600">Không nhập dữ liệu bé hơn 0</span>
+                </div>
             </div>
+
+            
+            <div class="mb-5">
+                <label for="rating" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rating</label>
+                <input type="number" name="rating" min="0" max="5" ngModel [(ngModel)]="product.rating" #rating="ngModel"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                     />
+                <div>
+                    <span *ngIf="rating.errors?.['min']" class="text-red-600">Không nhập dữ liệu bé hơn 0</span>
+                    <span *ngIf="rating.errors?.['max']" class="text-red-600">Không nhập dữ liệu lớn hơn 5</span>
+                </div>
+            </div>
+
+            
+            <div class="mb-5">
+                <label for="discountPercentage" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Discount</label>
+                <input type="number" min="0" max="100" name="discountPercentage" [(ngModel)]="product.discountPercentage" ngModel #discountPercentage="ngModel"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                 />
+                <div >
+                    <span *ngIf="discountPercentage.errors?.['min']" class="text-red-600">Không nhập dữ liệu bé hơn 0</span>
+                    <span *ngIf="discountPercentage.errors?.['max']" class="text-red-600">Không nhập dữ liệu lớn hơn 100</span>
+                </div>
+            </div>
+
+
+
         </div>
         <button [disabled]="formAddProduct.invalid" type="submit"
             class="text-white bg-blue-700 hover:bg-blue-800 disabled:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>

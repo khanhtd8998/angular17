@@ -14,22 +14,15 @@ import { NgIf } from '@angular/common';
   styleUrl: './product-edit.component.css'
 })
 export class ProductEditComponent {
-  product: Product = {
-    name: '',
-    price: 0,
-    description: '',
-    image: '',
-    category: '',
-    hide: false
-  }
+  product!: Product 
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
     private navigate: Router,
   ){
     this.route.paramMap.subscribe((params: any) => {
-      const id = String(params.get('id'));
-      this.productService.renderProduct(id).subscribe(
+      const _id = String(params.get('_id'));
+      this.productService.renderProduct(_id).subscribe(
         (res: any) => {
           // this.product = res.data;
           this.product = res;
@@ -39,7 +32,7 @@ export class ProductEditComponent {
     })
   }
   handleEditProduct (form: NgForm) {
-    this.productService.editProduct(this.product.id,form.value).subscribe({
+    this.productService.editProduct(this.product._id,form.value).subscribe({
       next: () => {
         form.reset()
         setTimeout(() => {

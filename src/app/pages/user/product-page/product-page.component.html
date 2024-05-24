@@ -336,7 +336,9 @@
 
           <!-- Product grid -->
           <div class="lg:col-span-3">
-            <!-- Your content -->
+            <div *ngFor="let p of products">
+              <app-product-card [product]="p"></app-product-card>
+          </div>
           </div>
         </div>
       </section>

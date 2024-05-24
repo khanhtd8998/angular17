@@ -24,16 +24,24 @@ export class ProductListComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.productService.renderProducts().subscribe({
-      next: (res) => {
-          // this.products = res.data;
-          this.products = res;
-      }, 
-      error: () => {
-        swal({
-          title: "Lỗi server",
-          icon: "warning",
-          dangerMode: true,
-        })
+      next: (res: any) => {
+        this.products = res.data;
+        console.log(this.products);
+      },
+      error: (err) => {
+        if (err.status == 400) {
+          swal({
+            title: "Danh sách sản phẩm đang trống",
+            icon: "warning",
+            dangerMode: true,
+          })
+        } else {
+          swal({
+            title: "Lỗi server",
+            icon: "warning",
+            dangerMode: true,
+          })
+        }
       }
     })
   }
@@ -42,7 +50,7 @@ export class ProductListComponent implements OnInit {
     showDetail?.classList.toggle('show-detail')
     this.productService.renderProduct(id).subscribe(
       (res: any) => {
-        this.productDetail = res;
+        this.productDetail = res.data;
       }
     )
   }
@@ -59,7 +67,7 @@ export class ProductListComponent implements OnInit {
         if (willDelete) {
           this.productService.deleteProduct(id).subscribe({
             next: () => {
-              this.products = this.products.filter((item: Product) => item.id != id)
+              this.products = this.products.filter((item: Product) => item._id != id)
               swal("Xóa sản phẩm thành công", {
                 icon: "success",
                 buttons: [''],

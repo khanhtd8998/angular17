@@ -40,11 +40,12 @@
 
       <div class="flex items-center gap-1">
         <div class='flex items-center md:w-[20rem] justify-end from-teal-10 bg-gradient-to-br'>
-          <form action="" class="relative flex">
-            <input type="search"
+          <form #formSearch="ngForm" (ngSubmit)="handleSearch(formSearch)" class="relative flex">
+            <input [(ngModel)]="search" name="search" type="search"
               class="text- peer cursor-pointer relative z-10 h-11 w-11 rounded-lg bg-transparent  pr-10 outline-none focus:rounded-r-none focus:w-full focus:cursor-text focus:border-taupeGray focus:px-3"
               placeholder="Search..." />
             <button
+              type="submit"
               class="absolute top-0 right-0 bottom-0 my-auto h-11 w-11 px-3 bg-white rounded-lg peer-focus:relative peer-focus:rounded-l-none">
               <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 50 50">
                 <path

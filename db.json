@@ -37,15 +37,6 @@
       "id": "6"
     },
     {
-      "name": "name 8",
-      "price": 97,
-      "description": "description 8",
-      "category": "Apple",
-      "image": "https://picsum.photos/200",
-      "hide": false,
-      "id": "8"
-    },
-    {
       "name": "123123",
       "price": 890,
       "description": "1231231",
