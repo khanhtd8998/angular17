@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { UserLayoutComponent } from './components/layouts/user-layout/user-layout.component';
 import { HomeComponent } from './pages/user/home/home.component';
@@ -17,13 +17,14 @@ import { CartComponent } from './pages/user/cart/cart.component';
 import { CheckoutComponent } from './pages/user/checkout/checkout.component';
 import { CheckoutDoneComponent } from './pages/user/checkout-done/checkout-done.component';
 import { ProductPageComponent } from './pages/user/product-page/product-page.component';
+import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
     {
         path: "",
         component: UserLayoutComponent,
         children: [
-            { path: "", component: HomeComponent },
+            { path: "", redirectTo: "home", pathMatch: "full"},
             { path: "home", component: HomeComponent },
             { path: "product-page/:search", component: ProductPageComponent },
             { path: "products/:id", component: ProductDetailComponent },
@@ -51,3 +52,9 @@ export const routes: Routes = [
     { path: "notfound", component: NotfoundComponent },
     { path: "**", redirectTo: "/notfound" },
 ];
+
+@NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
+  })
+  export class AppRoutingModule { }

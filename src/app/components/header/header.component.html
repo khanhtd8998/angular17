@@ -2,7 +2,7 @@
   <div class="mx-auto bg-white max-w-screen px-4 sm:px-6 lg:px-8 fixed top-0 left-0 right-0 z-10">
     <div class="flex h-16 items-center justify-between">
       <div class="md:flex md:items-center md:gap-12">
-        <a class="block text-[#3b82f6]" routerLink="/">
+        <a class="block text-[#3b82f6]" [routerLink]="['']">
           <span class="sr-only">Home</span>
           <svg class="h-8" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -14,11 +14,11 @@
           <nav class="" aria-label="Global">
             <ul class="flex items-center gap-10 text-md">
               <li>
-                <a class="text-gray-500 transition hover:text-gray-500/75" routerLink="/home"> Home </a>
+                <a class="text-gray-500 transition hover:text-gray-500/75" [routerLink]="['/home']"> Home </a>
               </li>
   
               <li>
-                <a class="text-gray-500 transition hover:text-gray-500/75" routerLink="/product-page"> Product </a>
+                <a class="text-gray-500 transition hover:text-gray-500/75" [routerLink]="['/product-page']"> Product </a>
               </li>
 
               <li>
