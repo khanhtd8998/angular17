@@ -6,7 +6,6 @@ import { provideHttpClient } from '@angular/common/http';
 import { ScrollPositionService } from './services/scroll/scroll-position.service';
 import { provideToastr } from 'ngx-toastr';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { MessageService } from 'primeng/api';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,6 +14,5 @@ export const appConfig: ApplicationConfig = {
     ScrollPositionService,
     provideToastr(),
     provideAnimations(),
-    MessageService
   ]
 };

@@ -3,10 +3,12 @@ import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { MessageService } from 'primeng/api';
+import { PaginatorModule } from 'primeng/paginator';
+
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [ToastModule, ButtonModule ,RippleModule],
+  imports: [ToastModule, ButtonModule ,RippleModule, PaginatorModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })

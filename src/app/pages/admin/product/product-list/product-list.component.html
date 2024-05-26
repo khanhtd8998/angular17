@@ -58,7 +58,7 @@
             </tr>
         </thead>
         <tbody class="divide-y divide-gray-100 border-t border-gray-100">
-            <tr *ngFor="let item of products" class="hover:bg-gray-50">
+            <tr *ngFor="let item of products | paginate: { itemsPerPage: 5, currentPage: p }" class="hover:bg-gray-50">
                 <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
                     <div class="text-sm">
                         <div class="font-medium text-gray-700">{{item.name}}</div>
@@ -117,10 +117,10 @@
                 </td>
             </tr>
         </tbody>
-
+        
         @if(productDetail){
             <div
-                class="show-product-detail hidden absolute top-36 right-20 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            class="show-product-detail hidden absolute top-36 right-20 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a routerLink="../../../products/{{productDetail._id}}">
                     <img class="rounded-t-lg w-[20rem] h-[18rem]" [src]="productDetail.image" alt="" />
                 </a>
@@ -153,6 +153,8 @@
                 </div>
             </div>
         }
-
     </table>
+    <div class="flex justify-center">
+        <pagination-controls class="" (pageChange)="p = $event"></pagination-controls>
+    </div>
 </div>

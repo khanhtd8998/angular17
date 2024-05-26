@@ -15,14 +15,20 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   products: Product[] = [];
+  totalRecords: number = 0;
+  limit: number = 10;
   constructor(
     private productService: ProductService,
     private navigate: Router
   ) {}
   ngOnInit(): void {
+    this.loadProducts(0, this.limit);
+  }
+  loadProducts(page: number, limit: number) {
     this.productService.renderProducts().subscribe({
       next: (res: any) => {
         this.products = res.data
+        this.totalRecords = res.results;
         console.log(res);
       },
       error: (err: any) => this.navigate.navigate(['/**'])

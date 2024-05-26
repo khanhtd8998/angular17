@@ -5,12 +5,13 @@ import { Product } from '../../../../interfaces/product';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ProductCardComponent } from '../../../../components/product-card/product-card.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 import swal from 'sweetalert';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, ProductCardComponent],
+  imports: [CommonModule, FormsModule, RouterLink, ProductCardComponent, NgxPaginationModule],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
@@ -19,14 +20,18 @@ export class ProductListComponent implements OnInit {
   productDetail!: Product
   newProducts!: Product[];
   keyword: string = "";
+  p: number = 1
+
   constructor(
     private productService: ProductService,
   ) { }
   ngOnInit(): void {
+    this.loadProducts()
+  }
+  loadProducts(): void {
     this.productService.renderProducts().subscribe({
       next: (res: any) => {
         this.products = res.data;
-        console.log(this.products);
       },
       error: (err) => {
         if (err.status == 400) {

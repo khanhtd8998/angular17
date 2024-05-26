@@ -12,7 +12,7 @@ export class ProductService {
   // API = "http://localhost:8000/products"
   http = inject(HttpClient)
   renderProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.API)
+    return this.http.get<Product[]>(`${this.API}`)
   }
 
   renderProduct(id: string | undefined): Observable<Product> {
