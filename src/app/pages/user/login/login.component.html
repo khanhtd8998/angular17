@@ -1,6 +1,6 @@
 <div class="lg:py-32 md:py-20 py-24">
-  <div class="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
-    <div class="hidden lg:block lg:w-1/2 bg-cover"
+  <div class="flex justify-center bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
+    <div class="hidden lg:block lg:w-1/2 bg-auto"
       style="background-image:url('https://t4.ftcdn.net/jpg/01/19/11/55/360_F_119115529_mEnw3lGpLdlDkfLgRcVSbFRuVl6sMDty.jpg')">
     </div>
     <div class="w-full p-8 lg:w-1/2">
@@ -30,27 +30,37 @@
         <a href="#" class="text-xs text-center text-gray-500 uppercase">or sign in with email</a>
         <span class="border-b w-1/5 lg:w-1/4"></span>
       </div>
-      <form action="">
-        <div class="mt-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-          <input
-            class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-            type="email">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="mb-6 h-20">
+            <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+            <input formControlName="email"
+                class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                type="email">
+            <div  *ngIf="loginForm['controls']['email']?.errors && (loginForm['controls']['email']?.dirty)">
+                <span class="" *ngIf="loginForm['controls']['email'].errors?.['email']" class="text-red-600">Email không đúng định dạng</span>
+                <span *ngIf="loginForm['controls']['email'].errors?.['required']" class="text-red-600">Không
+                    để trống dữ liệu</span>
+            </div>
         </div>
-        <div class="mt-4">
-          <div class="flex justify-between">
-            <label class="block text-gray-700 text-sm font-bold mb-2">Password</label>
-            <a [routerLink]="['/forgot-password']" routerLinkActive="router-link-active" class="text-xs text-gray-500">Forget Password?</a>
-          </div>
-          <input
-            class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-            type="password">
+        <div class="my-6 h-20">
+            <div class="flex justify-between">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+            </div>
+            <input formControlName="password"
+                class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                type="password">
+            <div *ngIf="loginForm['controls']['password']?.errors && (loginForm['controls']['password']?.dirty)">
+                <span *ngIf="loginForm['controls']['password'].errors?.['minlength']" class="text-red-600">Mật khẩu tối thiểu 5 ký tự</span>
+                <span *ngIf="loginForm['controls']['password'].errors?.['required']" class="text-red-600">Không
+                    để trống dữ liệu</span>
+            </div>
         </div>
         <div class="mt-8">
-          <button type="submit"
-            class="bg-blue-500 text-white font-bold py-2 px-4 w-full rounded hover:bg-blue-600">Login</button>
+            <button [disabled]="loginForm.invalid" type="submit"
+                class="bg-blue-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-blue-800 disabled:bg-blue-400">Sign
+                up</button>
         </div>
-      </form>
+    </form>
       <div class="mt-4 flex items-center justify-between">
         <span class="border-b w-1/5 md:w-1/4"></span>
         <a routerLink="/register" class="text-sm text-gray-500 uppercase">or <strong>sign up</strong> </a>
