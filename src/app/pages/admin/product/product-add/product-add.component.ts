@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Product } from '../../../../interfaces/product';
+import {  ProductRequest } from '../../../../interfaces/product';
 import { CommonModule, NgFor } from '@angular/common';
 import { FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../../../../services/product.service';
@@ -17,7 +17,7 @@ import { Category } from '../../../../interfaces/category';
 })
 export class ProductAddComponent {
   categories: Category[] = []
-  product: Product = {
+  product: ProductRequest = {
     name: '',
     price: 0,
     description: '',

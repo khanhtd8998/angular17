@@ -15,7 +15,7 @@ export interface Category {
     name: string,
     price: number,
     description: string,
-    category: string,
+    category: Category,
     image: string,
     hide?: boolean,
     discountPercentage?: number,
@@ -24,6 +24,23 @@ export interface Category {
     brand?: string,
     createdAt?: string,
     updatedAt?: string
+}
+
+export interface ProductRequest {
+  
+  _id?: string,
+  name: string,
+  price: number,
+  description: string,
+  category: string,
+  image: string,
+  hide?: boolean,
+  discountPercentage?: number,
+  rating?: number,
+  stock?: number,
+  brand?: string,
+  createdAt?: string,
+  updatedAt?: string
 }
 
 
