@@ -15,7 +15,7 @@ export interface Category {
     name: string,
     price: number,
     description: string,
-    category: Category,
+    category: string,
     image: string,
     hide?: boolean,
     discountPercentage?: number,

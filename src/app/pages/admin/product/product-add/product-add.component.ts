@@ -21,7 +21,7 @@ export class ProductAddComponent {
     name: '',
     price: 0,
     description: '',
-    category: {} as Category,
+    category: '',
     image: '',
     hide: false,
     rating: 0,
