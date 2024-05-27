@@ -11,23 +11,23 @@ export class ProductService {
   // API = "http://localhost:3000/products"
   // API = "http://localhost:8000/products"
   http = inject(HttpClient)
-  renderProducts(): Observable<Product[]> {
+  renderProducts(){
     return this.http.get<Product[]>(`${this.API}`)
   }
 
-  renderProduct(id: string | undefined): Observable<Product> {
+  renderProduct(id: string | undefined){
     return this.http.get<Product>(this.API + "/" + id)
   }
 
-  addProduct(product: ProductRequest): Observable<ProductRequest> {
+  addProduct(product: ProductRequest){
     return this.http.post<ProductRequest>(this.API, product)
   }
 
-  deleteProduct(id: string | undefined): Observable<Product> {
+  deleteProduct(id: string | undefined){
     return this.http.delete<Product>(this.API + "/" + id)
   }
 
-  editProduct(id: string | undefined, product: Product): Observable<Product> {
+  editProduct(id: string | undefined, product: Product){
     return this.http.put<Product>(this.API + "/" +  id, product)
   }
 
