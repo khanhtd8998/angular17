@@ -27,6 +27,7 @@ export interface Category {
 }
 
 export interface ProductRequest {
+  _id?: string,
   name: string,
   price: number,
   description: string,
@@ -37,6 +38,8 @@ export interface ProductRequest {
   rating: number,
   stock: number,
   discountPercentage: number,
+  createdAt?: string,
+  updatedAt?: string
 }
 
 

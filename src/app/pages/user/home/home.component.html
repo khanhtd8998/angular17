@@ -21,9 +21,12 @@
         </header>
 
         <div class="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
-            <div *ngFor="let p of products">
+            <div *ngFor="let p of products | paginate: { itemsPerPage: 8, currentPage: p }" >
                 <app-product-card [product]="p"></app-product-card>
             </div>
+        </div>
+        <div class="flex justify-center mt-10">
+            <pagination-controls class="" (pageChange)="p = $event"></pagination-controls>
         </div>
     </div>
 </section>

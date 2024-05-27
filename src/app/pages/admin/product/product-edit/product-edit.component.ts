@@ -1,40 +1,73 @@
-import { Component, inject } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../../../../services/product.service';
-import { Product } from '../../../../interfaces/product';
+import { Category, Product, ProductRequest } from '../../../../interfaces/product';
 import { ActivatedRoute, Router } from '@angular/router';
 import swal from 'sweetalert';
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
+import { CategoryService } from '../../../../services/category.service';
 
 @Component({
   selector: 'app-product-edit',
   standalone: true,
-  imports: [FormsModule, NgIf],
+  imports: [FormsModule, NgIf, ReactiveFormsModule, NgFor],
   templateUrl: './product-edit.component.html',
   styleUrl: './product-edit.component.css'
 })
 export class ProductEditComponent {
-  product!: Product 
+  product!: ProductRequest  
+  categories: Category[] = []
+  formEditProduct = new FormGroup({
+    name: new FormControl('', [Validators.required, Validators.minLength(5)]),
+    price: new FormControl(0, [Validators.required, Validators.min(1)]),
+    description: new FormControl('', Validators.required),
+    category: new FormControl('', Validators.required),
+    image: new FormControl('', Validators.required),
+    brand: new FormControl('', Validators.required),
+    hide: new FormControl(false),
+    rating: new FormControl(0),
+    stock: new FormControl(0),
+    discountPercentage: new FormControl(0),
+  })
   constructor(
     private productService: ProductService,
+    private categoryService: CategoryService,
     private route: ActivatedRoute,
-    private navigate: Router,
+    private navigate: Router
   ){
+    this.getAllCategory(),
+      this.getProductDetail()
+  }
+  getAllCategory() {
+    this.categoryService.renderCategories().subscribe({
+      next: (res: any) => {
+        this.categories = res.data
+      }
+    })
+  }
+  getProductDetail() {
     this.route.paramMap.subscribe((params: any) => {
-      const _id = String(params.get('_id'));
-      this.productService.renderProduct(_id).subscribe(
+      const id = String(params.get('id'));
+      this.productService.renderProduct(id).subscribe(
         (res: any) => {
           // this.product = res.data;
-          this.product = res;
-          console.log(res);
+          const productData = res.data;
+          this.product = {
+            ...productData,
+            category: productData.category._id,
+            _id: productData._id
+          }
+          console.log(this.product)
+          this.formEditProduct.patchValue(this.product)
         }
       )
     })
   }
-  handleEditProduct (form: NgForm) {
-    this.productService.editProduct(this.product._id,form.value).subscribe({
+  handleEditProduct () {
+    const product: ProductRequest = this.formEditProduct.value as ProductRequest
+    this.productService.editProduct(this.product._id, product).subscribe({
       next: () => {
-        form.reset()
+        this.formEditProduct.reset()
         setTimeout(() => {
           this.navigate.navigate(['/admin/products/list/'])
         }, 1000)
@@ -53,5 +86,6 @@ export class ProductEditComponent {
       })
     }
     )
+    console.log(this.formEditProduct.value)
   }
 }

@@ -6,25 +6,26 @@ import { ProductCardComponent } from '../../../components/product-card/product-c
 import { CommonModule } from '@angular/common';
 import swal from 'sweetalert';
 import { Router } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [BannerComponent, ProductCardComponent, CommonModule],
+  imports: [BannerComponent, ProductCardComponent, CommonModule, NgxPaginationModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
   products: Product[] = [];
   totalRecords: number = 0;
-  limit: number = 10;
+  p: number = 1;
   constructor(
     private productService: ProductService,
     private navigate: Router
   ) {}
   ngOnInit(): void {
-    this.loadProducts(0, this.limit);
+    this.loadProducts();
   }
-  loadProducts(page: number, limit: number) {
+  loadProducts() {
     this.productService.renderProducts().subscribe({
       next: (res: any) => {
         this.products = res.data

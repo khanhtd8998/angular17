@@ -48,8 +48,8 @@ export const routes: Routes = [
             { path: "products/edit/:id", component: ProductEditComponent }
         ]
     },
-    // { path: "notfound", component: NotfoundComponent },
-    // { path: "**", redirectTo: "/notfound" },
+    { path: "notfound", component: NotfoundComponent },
+    { path: "**", redirectTo: "/notfound" },
 ];
 
 @NgModule({

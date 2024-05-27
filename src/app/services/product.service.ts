@@ -27,8 +27,8 @@ export class ProductService {
     return this.http.delete<Product>(this.API + "/" + id)
   }
 
-  editProduct(id: string | undefined, product: Product){
-    return this.http.put<Product>(this.API + "/" +  id, product)
+  editProduct(id: string | undefined, product: ProductRequest){
+    return this.http.put<ProductRequest>(this.API + "/" +  id, product)
   }
 
   searchProduct(text: string | undefined): Observable<Product> {

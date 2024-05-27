@@ -31,10 +31,10 @@ export class ProductAddComponent {
   })
   constructor(
     private productService: ProductService,
-    private categoryServie: CategoryService,
+    private categoryService: CategoryService,
     private router: Router,
   ) {
-    this.categoryServie.renderCategories().subscribe({
+    this.categoryService.renderCategories().subscribe({
       next: (res: any) => {
         this.categories = res.data
         console.log(this.categories)
@@ -60,7 +60,7 @@ export class ProductAddComponent {
             })
           },
           error: (err: any) => {
-            if (err.status == 400) {
+            if (err.status == 404) {
               swal({
                 title: "Thêm sản phẩm thất bại",
                 icon: "warning",
