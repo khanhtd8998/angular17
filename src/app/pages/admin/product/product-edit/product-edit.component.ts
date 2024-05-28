@@ -55,7 +55,6 @@ export class ProductEditComponent {
           this.product = {
             ...productData,
             category: productData.category._id,
-            _id: productData._id
           }
           console.log(this.product)
           this.formEditProduct.patchValue(this.product)

@@ -60,6 +60,11 @@ export class ProductListComponent implements OnInit {
     )
   }
 
+  closeProductDetail() {
+    const showDetail = document.querySelector('.show-product-detail')
+    showDetail?.classList.remove('show-detail')
+  }
+
   handleDelProduct(id: string | undefined) {
     swal({
       title: "Bạn muốn xóa sản phẩm này?",
