@@ -17,7 +17,7 @@ import { Category } from '../../../../interfaces/category';
 })
 export class ProductAddComponent {
   categories: Category[] = []
-  formAddProduct = new FormGroup({
+  formAddProduct: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(5)]),
     price: new FormControl(0, [Validators.required, Validators.min(1)]),
     description: new FormControl('', Validators.required),
@@ -25,9 +25,9 @@ export class ProductAddComponent {
     image: new FormControl('', Validators.required),
     brand: new FormControl('', Validators.required),
     hide: new FormControl(false),
-    rating: new FormControl(0),
-    stock: new FormControl(0),
-    discountPercentage: new FormControl(0),
+    rating: new FormControl(0, Validators.min(0)),
+    stock: new FormControl(0, Validators.min(0)),
+    discountPercentage: new FormControl(0, Validators.min(0)),
   })
   constructor(
     private productService: ProductService,
@@ -43,8 +43,8 @@ export class ProductAddComponent {
   }
   handleAddProduct() {
     if (this.formAddProduct.valid) {
-      const product: ProductRequest = this.formAddProduct.value as ProductRequest
-      this.productService.addProduct(product).subscribe(
+      // const product: ProductRequest = this.formAddProduct.value as ProductRequest
+      this.productService.addProduct(this.formAddProduct.value).subscribe(
         {
           next: () => {
             this.formAddProduct.reset()
@@ -60,19 +60,11 @@ export class ProductAddComponent {
             })
           },
           error: (err: any) => {
-            if (err.status == 404) {
-              swal({
-                title: "Thêm sản phẩm thất bại",
-                icon: "warning",
-                dangerMode: true,
-              })
-            } else {
-              swal({
-                title: "Lỗi server",
-                icon: "warning",
-                dangerMode: true,
-              })
-            }
+            swal({
+              title: `${err.error.message}`,
+              icon: "warning",
+              dangerMode: true,
+            })
           }
         }
       )

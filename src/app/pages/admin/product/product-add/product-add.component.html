@@ -4,27 +4,27 @@
         <div class="grid grid-cols-2 gap-2">
             <div class="mb-5">
                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                <input type="text"  formControlName="name"
+                <input type="text" formControlName="name"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required />
                 <div
-                    *ngIf="formAddProduct['controls']['name'].invalid && (formAddProduct['controls']['name']?.dirty || formAddProduct['controls']['name']?.touched)">
-                    <span *ngIf="formAddProduct['controls']['name'].errors?.['minlength']" class="text-red-600">Dữ liệu
+                    *ngIf="formAddProduct.get('name')?.invalid && (formAddProduct.get('name')?.dirty || formAddProduct.get('name')?.touched)">
+                    <span *ngIf="formAddProduct.get('name')?.errors?.['minlength']" class="text-red-600">Dữ liệu
                         tối thiểu 3 ký tự</span>
-                    <span *ngIf="formAddProduct['controls']['name'].errors?.['required']" class="text-red-600">Không để
+                    <span *ngIf="formAddProduct.get('name')?.errors?.['required']" class="text-red-600">Không để
                         trống dữ liệu</span>
                 </div>
             </div>
             <div class="mb-5">
                 <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
-                <input type="number"  formControlName="price"
+                <input type="number" formControlName="price"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required />
                 <div
-                    *ngIf="formAddProduct['controls']['price'].invalid && (formAddProduct['controls']['price']?.dirty || formAddProduct['controls']['price']?.touched)">
-                    <span *ngIf="formAddProduct['controls']['price'].errors?.['min']" class="text-red-600">Không nhập dữ
+                    *ngIf="formAddProduct.get('price')?.invalid && (formAddProduct.get('price')?.dirty || formAddProduct.get('price')?.touched)">
+                    <span *ngIf="formAddProduct.get('price')?.errors?.['min']" class="text-red-600">Không nhập dữ
                         liệu bé hơn 0</span>
-                    <span *ngIf="formAddProduct['controls']['price'].errors?.['required']" class="text-red-600">Không để
+                    <span *ngIf="formAddProduct.get('price')?.errors?.['required']" class="text-red-600">Không để
                         trống dữ liệu</span>
                 </div>
             </div>
@@ -33,27 +33,26 @@
             <div class="mb-5">
                 <label for="description"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                <input type="text"  formControlName="description"
+                <input type="text" formControlName="description"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required />
                 <div
-                    *ngIf="formAddProduct['controls']['description'].invalid && (formAddProduct['controls']['description']?.dirty || formAddProduct['controls']['description']?.touched)">
-                    <span *ngIf="formAddProduct['controls']['description'].errors?.['required']"
-                        class="text-red-600">Không để
+                    *ngIf="formAddProduct.get('description')?.invalid && (formAddProduct.get('description')?.dirty || formAddProduct.get('description')?.touched)">
+                    <span *ngIf="formAddProduct.get('description')?.errors?.['required']" class="text-red-600">Không để
                         trống dữ liệu</span>
                 </div>
             </div>
             <div class="mb-5">
                 <label for="category"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                <select ngModel  formControlName="category" required
+                <select ngModel formControlName="category" required
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option value="">Select Category</option>
                     <option *ngFor="let item of categories" [ngValue]="item._id">{{item.name}}</option>
                 </select>
                 <div
-                    *ngIf="formAddProduct['controls']['category'].invalid && (formAddProduct['controls']['category'].dirty || formAddProduct['controls']['category'].touched)">
-                    <span *ngIf="formAddProduct['controls']['category'].errors?.['required']" class="text-red-600">Không
+                    *ngIf="formAddProduct.get('category')?.invalid && (formAddProduct.get('category')?.dirty || formAddProduct.get('category')?.touched)">
+                    <span *ngIf="formAddProduct.get('category')?.errors?.['required']" class="text-red-600">Không
                         để trống dữ liệu</span>
                 </div>
             </div>
@@ -61,12 +60,12 @@
         <div class="grid grid-cols-2 gap-2">
             <div class="mb-5">
                 <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
-                <input type="text"  formControlName="image"
+                <input type="text" formControlName="image"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required />
                 <div
-                    *ngIf="formAddProduct['controls']['image'].invalid && (formAddProduct['controls']['image']?.dirty || formAddProduct['controls']['image']?.touched)">
-                    <span *ngIf="formAddProduct['controls']['image'].errors?.['required']" class="text-red-600">Không để
+                    *ngIf="formAddProduct.get('image')?.invalid && (formAddProduct.get('image')?.dirty || formAddProduct.get('image')?.touched)">
+                    <span *ngIf="formAddProduct.get('image')?.errors?.['required']" class="text-red-600">Không để
                         trống dữ liệu</span>
                 </div>
             </div>
@@ -76,10 +75,10 @@
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required />
                 <div
-                    *ngIf="formAddProduct['controls']['brand'].invalid && (formAddProduct['controls']['brand']?.dirty || formAddProduct['controls']['brand']?.touched)">
-                    <span *ngIf="formAddProduct['controls']['brand'].errors?.['required']" class="text-red-600">Không để
+                    *ngIf="formAddProduct.get('brand')?.invalid && (formAddProduct.get('brand')?.dirty || formAddProduct.get('brand')?.touched)">
+                    <span *ngIf="formAddProduct.get('brand')?.errors?.['required']" class="text-red-600">Không để
                         trống dữ liệu</span>
-                    <span *ngIf="formAddProduct['controls']['brand'].errors?.['minlength']" class="text-red-600">Dữ liệu
+                    <span *ngIf="formAddProduct.get('brand')?.errors?.['minlength']" class="text-red-600">Dữ liệu
                         tối thiểu 3 ký tự</span>
                 </div>
             </div>
@@ -87,34 +86,35 @@
         <div class="grid grid-cols-3 gap-2">
             <div class="mb-5">
                 <label for="stock" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Stock</label>
-                <input type="number"  min="0" formControlName="stock"
+                <input type="number" min="0" formControlName="stock"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                 <div>
-                    <span *ngIf="formAddProduct['controls']['stock'].errors?.['min']" class="text-red-600">Không nhập dữ
+                    <span *ngIf="formAddProduct.get('stock')?.errors?.['min']" class="text-red-600">Không nhập dữ
                         liệu bé hơn 0</span>
+                    <span *ngIf="formAddProduct.get('stock')?.errors?.['pattern']" class="text-red-600">Không đúng định đạng dữ liệu</span>
                 </div>
             </div>
             <div class="mb-5">
                 <label for="rating" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rating</label>
-                <input type="number"  min="0" max="5" formControlName="rating"
+                <input type="number" min="0" max="5" formControlName="rating"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                 <div>
-                    <span *ngIf="formAddProduct['controls']['rating'].errors?.['min']" class="text-red-600">Không nhập
+                    <span *ngIf="formAddProduct.get('rating')?.errors?.['min']" class="text-red-600">Không nhập
                         dữ liệu bé hơn 0</span>
-                    <span *ngIf="formAddProduct['controls']['rating'].errors?.['max']" class="text-red-600">Không nhập
+                    <span *ngIf="formAddProduct.get('rating')?.errors?.['max']" class="text-red-600">Không nhập
                         dữ liệu lớn hơn 5</span>
                 </div>
             </div>
             <div class="mb-5">
                 <label for="discountPercentage"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Discount</label>
-                <input type="number" min="0" max="100"  formControlName="discountPercentage"
+                <input type="number" min="0" max="100" formControlName="discountPercentage"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                 <div>
-                    <span *ngIf="formAddProduct['controls']['discountPercentage'].errors?.['min']"
-                        class="text-red-600">Không nhập dữ liệu bé hơn 0</span>
-                    <span *ngIf="formAddProduct['controls']['discountPercentage'].errors?.['max']"
-                        class="text-red-600">Không nhập dữ liệu lớn hơn 100</span>
+                    <span *ngIf="formAddProduct.get('discountPercentage')?.errors?.['min']" class="text-red-600">Không
+                        nhập dữ liệu bé hơn 0</span>
+                    <span *ngIf="formAddProduct.get('discountPercentage')?.errors?.['max']" class="text-red-600">Không
+                        nhập dữ liệu lớn hơn 100</span>
                 </div>
             </div>
         </div>
@@ -124,8 +124,8 @@
                 <div class="flex items-center mb-4">
                     <input id="hide" type="checkbox" value="" formControlName="hide"
                         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="hide"
-                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Hide Product</label>
+                    <label for="hide" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Hide
+                        Product</label>
                 </div>
             </div>
         </div>

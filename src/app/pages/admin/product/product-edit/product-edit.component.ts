@@ -25,8 +25,8 @@ export class ProductEditComponent {
     image: new FormControl('', Validators.required),
     brand: new FormControl('', Validators.required),
     hide: new FormControl(false),
-    rating: new FormControl(0),
-    stock: new FormControl(0),
+    rating: new FormControl(0, Validators.min(0)),
+    stock: new FormControl(0, Validators.min(0)),
     discountPercentage: new FormControl(0),
   })
   constructor(

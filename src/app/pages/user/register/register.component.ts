@@ -29,7 +29,7 @@ export class RegisterComponent {
   onSubmit() {
     if (this.registerForm.invalid) {
       swal({
-        title: "Thêm sản phẩm thất bại",
+        title: "Đăng ký tài khoản thất bại",
         icon: "warning",
         dangerMode: true,
       })

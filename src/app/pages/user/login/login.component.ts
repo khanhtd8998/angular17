@@ -4,6 +4,8 @@ import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../../services/user/user.service';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import swal from 'sweetalert';
+import { LoginUserRequest } from '../../../interfaces/User';
 
 @Component({
   selector: 'app-login',
@@ -25,6 +27,44 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    console.log(this.loginForm.value)
+    if (this.loginForm.invalid) {
+      swal({
+        title: "Đăng ký tài khoản thất bại",
+        icon: "warning",
+        dangerMode: true,
+      })
+    }
+    const user: LoginUserRequest = this.loginForm.value as LoginUserRequest
+    this.userService.loginUser(user).subscribe({
+      next: () => {
+        this.loginForm.reset()
+        setTimeout(() => {
+          this.router.navigate(['/admin/dashboard'])
+        }, 1000)
+        swal({
+          title: "Thành công",
+          text: "Đăng nhập thành công",
+          icon: "success",
+          buttons: [""],
+          timer: 2000,
+        })
+      },
+      error: (err: any) => {
+        if (err.status == 400) {
+          swal({
+            title: `Lỗi ${err.status}`,
+            text: `${err.error.message}`,
+            icon: "warning",
+            dangerMode: true,
+          })
+        } else {
+          swal({
+            title: "Lỗi server",
+            icon: "warning",
+            dangerMode: true,
+          })
+        }
+      }
+    })
   }
 }
