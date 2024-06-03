@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../../../../services/product.service';
-import { Category, Product, ProductRequest } from '../../../../interfaces/product';
+import { Category, Product, ProductRequest } from '../../../../interfaces/Product';
 import { ActivatedRoute, Router } from '@angular/router';
 import swal from 'sweetalert';
 import { NgFor, NgIf } from '@angular/common';

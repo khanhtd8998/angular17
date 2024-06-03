@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import swal from 'sweetalert';
 import { LoginUserRequest } from '../../../interfaces/User';
+import { AuthService } from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ import { LoginUserRequest } from '../../../interfaces/User';
 export class LoginComponent {
   userService = inject(UserService)
   router = inject(Router)
+  authService = inject(AuthService)
   scrollService = inject(ScrollPositionService)
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -36,10 +38,11 @@ export class LoginComponent {
     }
     const user: LoginUserRequest = this.loginForm.value as LoginUserRequest
     this.userService.loginUser(user).subscribe({
-      next: () => {
+      next: (res: any) => {
+        this.authService.setToken(res.token)
         this.loginForm.reset()
         setTimeout(() => {
-          this.router.navigate(['/admin/dashboard'])
+          this.router.navigate(['/admin'])
         }, 1000)
         swal({
           title: "Thành công",
@@ -50,20 +53,11 @@ export class LoginComponent {
         })
       },
       error: (err: any) => {
-        if (err.status == 400) {
-          swal({
-            title: `Lỗi ${err.status}`,
-            text: `${err.error.message}`,
-            icon: "warning",
-            dangerMode: true,
-          })
-        } else {
-          swal({
-            title: "Lỗi server",
-            icon: "warning",
-            dangerMode: true,
-          })
-        }
+        swal({
+          title: `${err.error.message}`,
+          icon: "warning",
+          dangerMode: true,
+        })
       }
     })
   }

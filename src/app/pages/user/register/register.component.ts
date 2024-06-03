@@ -1,16 +1,16 @@
-import { Component, Inject, inject } from '@angular/core';
-import { ScrollPositionService } from '../../../services/scroll/scroll-position.service';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UserService } from '../../../services/user/user.service';
 import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import swal from 'sweetalert';
 import { RegisterUserRequest } from '../../../interfaces/User';
-import { Router } from '@angular/router';
+import { ScrollPositionService } from '../../../services/scroll/scroll-position.service';
+import { UserService } from '../../../services/user/user.service';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, FormsModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -18,24 +18,47 @@ export class RegisterComponent {
   scrollService = inject(ScrollPositionService)
   userService = inject(UserService)
   router = inject(Router)
-  registerForm = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.minLength(5)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(5)]),
-  })
+  registerForm: FormGroup
+  MustMatch(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+      if (matchingControl.errors && !matchingControl.errors?.['mustMatch']) {
+        return;
+      }
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ mustMatch: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
+  }
+  constructor() {
+    this.registerForm = new FormGroup({
+      username: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      confirmPass: new FormControl('', [Validators.required, Validators.minLength(5)]),
+    })
+  }
+
   ngOnInit(): void {
     this.scrollService.scrollToTop()
   }
   onSubmit() {
     if (this.registerForm.invalid) {
+      return
+    }
+    if(this.registerForm.value.password != this.registerForm.value.confirmPass){
       swal({
-        title: "Đăng ký tài khoản thất bại",
+        title: `Mật khẩu nhập lại không đúng`,
         icon: "warning",
         dangerMode: true,
       })
+      return
     }
     const user: RegisterUserRequest = this.registerForm.value as RegisterUserRequest
-    this.userService.regíterUsers(user).subscribe({
+    this.userService.registerUsers(user).subscribe({
       next: () => {
         this.registerForm.reset()
         setTimeout(() => {
@@ -50,21 +73,12 @@ export class RegisterComponent {
         })
       },
       error: (err: any) => {
-        if (err.status == 404) {
-          swal({
-            title: "Đăng ký tài khoản thất bại",
-            icon: "warning",
-            dangerMode: true,
-          })
-        } else {
-          swal({
-            title: "Lỗi server",
-            icon: "warning",
-            dangerMode: true,
-          })
-        }
+        swal({
+          title: `${err.error.message}`,
+          icon: "warning",
+          dangerMode: true,
+        })
       }
     })
-    console.log(this.registerForm.value);
   }
 }

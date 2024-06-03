@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../services/product.service';
-import { Product } from '../../../interfaces/product';
+import { Product } from '../../../interfaces/Product';
 import { ProductCardComponent } from '../../../components/product-card/product-card.component';
 import { CommonModule } from '@angular/common';
 import { ScrollPositionService } from '../../../services/scroll/scroll-position.service';

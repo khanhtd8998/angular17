@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BannerComponent } from '../../../components/banner/banner.component';
-import { Product } from '../../../interfaces/product';
+import { Product } from '../../../interfaces/Product';
 import { ProductService } from '../../../services/product.service';
 import { ProductCardComponent } from '../../../components/product-card/product-card.component';
 import { CommonModule } from '@angular/common';

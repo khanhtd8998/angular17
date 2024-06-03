@@ -18,6 +18,9 @@ import { CheckoutComponent } from './pages/user/checkout/checkout.component';
 import { CheckoutDoneComponent } from './pages/user/checkout-done/checkout-done.component';
 import { ProductPageComponent } from './pages/user/product-page/product-page.component';
 import { NgModule } from '@angular/core';
+import { CategoryListComponent } from './pages/admin/category/category-list/category-list.component';
+import { CategoryAddComponent } from './pages/admin/category/category-add/category-add.component';
+import { AuthGuard } from './services/auth_guard/auth-guard.service';
 
 export const routes: Routes = [
     {
@@ -39,13 +42,16 @@ export const routes: Routes = [
     { path: "checkout/done", component: CheckoutDoneComponent },
     {
         path: "admin",
+        canActivate: [AuthGuard],
         component: AdminLayoutComponent,
         children: [
             { path: "", redirectTo: "dashboard", pathMatch: "full"},
             { path: "dashboard", component: DashboardComponent },
             { path: "products/list", component: ProductListComponent },
             { path: "products/add", component: ProductAddComponent },
-            { path: "products/edit/:id", component: ProductEditComponent }
+            { path: "products/edit/:id", component: ProductEditComponent },
+            { path: "categories/list", component: CategoryListComponent },
+            { path: "categories/add", component: CategoryAddComponent },
         ]
     },
     { path: "notfound", component: NotfoundComponent },

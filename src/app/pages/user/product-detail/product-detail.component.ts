@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from '../../../interfaces/product';
+import { Product } from '../../../interfaces/Product';
 import { ProductService } from '../../../services/product.service';
 import { CommonModule } from '@angular/common';
 import { ScrollPositionService } from '../../../services/scroll/scroll-position.service';

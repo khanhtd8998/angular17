@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductRequest } from '../../../../interfaces/product';
+import { ProductRequest } from '../../../../interfaces/Product';
 import { CommonModule, NgFor } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../../../../services/product.service';
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import swal from 'sweetalert';
 import { CategoryService } from '../../../../services/category.service';
-import { Category } from '../../../../interfaces/category';
+import { Category } from '../../../../interfaces/Category';
 @Component({
   selector: 'app-product-add',
   standalone: true,

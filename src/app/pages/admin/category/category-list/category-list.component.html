@@ -10,7 +10,7 @@
                         clip-rule="evenodd"></path>
                 </svg>
             </div>
-            <input type="text" id="voice-search" [(ngModel)]="keyword" (input)="handleSearchKeyword()"
+            <input type="text" id="voice-search"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm w-full-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Search Mockups, Logos, Design Templates..." required>
             <button type="button" class="flex absolute inset-y-0 right-0 items-center pr-3">
@@ -31,13 +31,13 @@
                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>Search
             </button>
-            <a type="submit" [routerLink]="['/admin/products/add']"
+            <a type="submit" [routerLink]="['/admin/categories/add']"
                 class="inline-flex items-center py-2.5 px-3 w-full sm:w-auto text-sm font-medium text-white bg-green-700 rounded-lg border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                     <path
                         d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
                 </svg>
-                Product
+                Category
             </a>
         </div>
     </div>
@@ -46,7 +46,7 @@
 
 <div class="rounded-lg border border-gray-200 shadow-md my-5">
     <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
-        @if(products==undefined){
+        @if(categories==undefined){
         <div class="flex items-center justify-center h-[25rem]" role="status">
             <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
                 viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,35 +61,33 @@
         </div>
         }
     </table>
-    <table *ngIf="products" class="w-full border-collapse bg-white text-left text-sm text-gray-500">
+    <table *ngIf="categories" class="w-full border-collapse bg-white text-left text-sm text-gray-500">
         <thead class="bg-gray-50">
             <tr>
                 <th scope="col" class="px-6 py-4 font-medium text-gray-900">Name</th>
                 <th scope="col" class="px-6 py-4 font-medium text-gray-900">Image</th>
-                <th scope="col" class="px-6 py-4 font-medium text-gray-900">Price</th>
-                <th scope="col" class="px-1 py-4 font-medium text-gray-900 w-[10%]">Category</th>
                 <th scope="col" class="px-6 py-4 font-medium text-gray-900">Description</th>
+                <th scope="col" class="px-6 py-4 font-medium text-gray-900">Slug</th>
                 <th scope="col" class="px-6 py-4 font-medium text-gray-900">Status</th>
                 <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
             </tr>
         </thead>
         <tbody class="divide-y divide-gray-100 border-t border-gray-100">
-            <tr *ngFor="let item of products | paginate: { itemsPerPage: 5, currentPage: p }" class="hover:bg-gray-50">
+            <tr *ngFor="let item of categories | paginate: { itemsPerPage: 5, currentPage: p }" class="hover:bg-gray-50">
                 <td class="flex gap-3 px-6 py-4 font-normal text-gray-900">
                     <div class="text-sm">
                         <div class="font-medium text-gray-700">{{item.name}}</div>
                     </div>
                 </td>
                 <td class="px-6 py-4"><img width="50px" height="50px" [src]="item.image" alt=""></td>
-                <td class="px-6 py-4">{{item.price}}</td>
-                <td class="px-1 py-4">
+                <td class="px-6 py-4">
                     <div class="flex gap-2">
-                        {{item.category.name}}
+                        {{item.description}}
                     </div>
                 </td>
                 <td class="px-6 py-4">
                     <div class="flex gap-2">
-                        {{item.description}}
+                        {{item.slug}}
                     </div>
                 </td>
                 <td class="px-6 py-4">
@@ -104,75 +102,25 @@
                 </td>
                 <td class="px-6 py-4">
                     <div class="flex justify-end gap-4">
-                        <button x-data="{ tooltip: 'Delete' }" (click)="handleDelProduct(item._id)">
+                        <button x-data="{ tooltip: 'Delete' }" (click)="handleDelCategory(item._id)">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="h-6 w-6" x-tooltip="tooltip">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
                             </svg>
                         </button>
-                        <a x-data="{ tooltip: 'Edite' }" href="admin/products/edit/{{item._id}}">
+                        <a x-data="{ tooltip: 'Edite' }" href="admin/categories/edit/{{item._id}}">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="h-6 w-6" x-tooltip="tooltip">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
                             </svg>
                         </a>
-                        <div class="">
-                            <button (click)="showProductDetail(item._id)" class="relative btn-show">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                </svg>
-                            </button>
-                        </div>
                     </div>
                 </td>
             </tr>
         </tbody>
 
-        @if(productDetail){
-        <div
-            class="show-product-detail hidden absolute top-36 right-20 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <div class="flex justify-end">
-                <button (click)="closeProductDetail()" type="button"
-                    class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm py-2 px-3.5 my-1 me-1 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">X</button>
-            </div>
-            <a routerLink="../../../products/{{productDetail._id}}">
-                <img class="rounded-t-lg mx-auto w-[18rem] h-[15rem]" [src]="productDetail.image" alt="" />
-            </a>
-            <div class="p-3">
-                <a routerLink="../../../products/{{productDetail._id}}">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                        {{productDetail.name}}</h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{productDetail.description}}</p>
-                <p class="my-1">
-                    <span *ngIf="productDetail.hide == false"
-                        class="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-1 text-xs font-semibold text-green-600">
-                        <span class="h-1.5 w-1.5 rounded-full bg-green-600"></span>Available
-                    </span>
-                    <span *ngIf="productDetail?.hide == true"
-                        class="inline-flex items-center gap-1 rounded-full bg-red-50 px-2 py-1 text-xs font-semibold text-red-600">
-                        <span class="h-1.5 w-1.5 rounded-full bg-red-600"></span>Sold-out
-                    </span>|
-                    <span class="font-semibold">{{productDetail.price}} $</span>
-                </p>
-                <a routerLink="../../../products/{{productDetail._id}}"
-                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    View Detail
-                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="none" viewBox="0 0 14 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M1 5h12m0 0L9 1m4 4L9 9" />
-                    </svg>
-                </a>
-            </div>
-        </div>
-        }
     </table>
     <div class="flex justify-center mt-3">
         <pagination-controls class="" (pageChange)="p = $event"></pagination-controls>
