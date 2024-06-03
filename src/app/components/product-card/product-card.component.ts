@@ -1,5 +1,5 @@
 import { Component, Input, inject } from '@angular/core';
-import { Product } from '../../interfaces/Product';
+import { Product } from '../../interfaces/product';
 import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ToastModule } from 'primeng/toast';

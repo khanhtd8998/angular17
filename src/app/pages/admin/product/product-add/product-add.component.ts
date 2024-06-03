@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductRequest } from '../../../../interfaces/Product';
+import { ProductRequest } from '../../../../interfaces/product';
 import { CommonModule, NgFor } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../../../../services/product.service';
