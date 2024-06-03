@@ -6,7 +6,7 @@ import { LoginUserRequest, RegisterUserRequest } from '../../interfaces/User';
   providedIn: 'root'
 })
 export class UserService {
-  API = "https://nodejs-project-8998.vercel.app/"
+  API = "https://nodejs-project-8998.vercel.app"
   // API = "http://localhost:8000"
 
   http =  inject(HttpClient)
