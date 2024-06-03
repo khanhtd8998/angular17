@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import swal from 'sweetalert';
 import { CategoryService } from '../../../../services/category.service';
-import { Category } from '../../../../interfaces/Category';
+import { Category } from '../../../../interfaces/category';
 @Component({
   selector: 'app-product-add',
   standalone: true,

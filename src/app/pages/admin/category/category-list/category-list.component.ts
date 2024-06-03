@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 import { CategoryService } from '../../../../services/category.service';
-import { Category } from '../../../../interfaces/Category';
+import { Category } from '../../../../interfaces/category';
 import swal from 'sweetalert';
 
 @Component({

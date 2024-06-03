@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import swal from 'sweetalert';
 import { NgFor, NgIf } from '@angular/common';
 import { CategoryService } from '../../../../services/category.service';
-import { Category } from '../../../../interfaces/Category';
+import { Category } from '../../../../interfaces/category';
 
 @Component({
   selector: 'app-product-edit',
