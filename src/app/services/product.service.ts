@@ -7,8 +7,8 @@ import { Product, ProductRequest } from '../interfaces/Product';
   providedIn: 'root'
 })
 export class ProductService {
-  API = "https://nodejs-project-8998.vercel.app/products"
-  // API = "http://localhost:8000/products"
+  // API = "https://nodejs-project-8998.vercel.app/products"
+  API = "http://localhost:8000/products"
   http = inject(HttpClient)
   private getAuthHeaders() {
     const token = localStorage.getItem('token');

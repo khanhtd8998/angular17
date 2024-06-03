@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CategoryService {
-  API = "https://nodejs-project-8998.vercel.app/categories"
-  // API = "http://localhost:8000/categories"
+  // API = "https://nodejs-project-8998.vercel.app/categories"
+  API = "http://localhost:8000/categories"
   http = inject(HttpClient)
   constructor() {}
   private getAuthHeaders() {
