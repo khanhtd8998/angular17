@@ -55,7 +55,7 @@
                         class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                         type="password">
                     <div *ngIf="registerForm['controls']['confirmPass']?.errors && (registerForm['controls']['confirmPass']?.dirty)">
-                        <span *ngIf="registerForm['controls']['confirmPass'].errors?.['minlength']" class="text-red-600">Mật khẩu tối thiểu 5 ký tự</span>
+                        <span *ngIf="registerForm['controls']['confirmPass'].errors?.['minlength']" class="text-red-600">Mật khẩu tối thiểu 6 ký tự</span>
                         <span *ngIf="registerForm['controls']['confirmPass'].errors?.['required']" class="text-red-600">Không
                             để trống dữ liệu</span>
                     </div>

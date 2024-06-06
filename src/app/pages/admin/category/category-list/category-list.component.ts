@@ -19,14 +19,25 @@ export class CategoryListComponent {
   categories: Category[] = [];
   p: number = 1;
   categoryService = inject(CategoryService)
-  constructor() {
+  ngOnInit(){
     this.categoryService.renderCategories().subscribe({
       next: (res: any) => {
         this.categories = res.data
-        console.log(this.categories)
       },
       error: (err: any) => {
-        console.log(err)
+        if (err.status == 400) {
+          swal({
+            title: "Danh sách sản phẩm đang trống",
+            icon: "warning",
+            dangerMode: true,
+          })
+        } else {
+          swal({
+            title: "Lỗi server",
+            icon: "warning",
+            dangerMode: true,
+          })
+        }
       }
     })
   }

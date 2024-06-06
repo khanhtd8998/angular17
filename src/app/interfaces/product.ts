@@ -1,3 +1,5 @@
+import { Bid } from "./Bid";
+
 export interface Category {
   _id?: string;
   name?: string;
@@ -24,8 +26,10 @@ export interface Product {
   rating?: number,
   stock?: number,
   brand?: string,
-  createdAt?: string,
-  updatedAt?: string
+  createdAt?: Date,
+  updatedAt?: Date,
+  bids: Bid[]
+  bidTime: number
 }
 
 export interface ProductRequest {
@@ -40,8 +44,6 @@ export interface ProductRequest {
   rating?: number,
   stock?: number,
   discountPercentage?: number,
-  createdAt?: string,
-  updatedAt?: string
 }
 
 

@@ -28,6 +28,8 @@ export class ProductAddComponent {
     rating: new FormControl(0, Validators.min(0)),
     stock: new FormControl(0, Validators.min(0)),
     discountPercentage: new FormControl(0, Validators.min(0)),
+    // startAt: new FormControl(''),
+    // bidTime: new FormControl(''),
   })
   constructor(
     private productService: ProductService,
@@ -37,11 +39,11 @@ export class ProductAddComponent {
     this.categoryService.renderCategories().subscribe({
       next: (res: any) => {
         this.categories = res.data
-        console.log(this.categories)
       }
     })
   }
   handleAddProduct() {
+    console.log(this.formAddProduct.value);
     if (this.formAddProduct.valid) {
       // const product: ProductRequest = this.formAddProduct.value as ProductRequest
       this.productService.addProduct(this.formAddProduct.value).subscribe(

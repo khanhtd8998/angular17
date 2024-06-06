@@ -30,7 +30,6 @@ export class HomeComponent implements OnInit {
       next: (res: any) => {
         this.products = res.data
         this.totalRecords = res.results;
-        console.log(res);
       },
       error: (err: any) => this.navigate.navigate(['/**'])
     })

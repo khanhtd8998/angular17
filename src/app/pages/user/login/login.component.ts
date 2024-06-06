@@ -22,7 +22,7 @@ export class LoginComponent {
   scrollService = inject(ScrollPositionService)
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(5)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   })
   ngOnInit(): void {
     this.scrollService.scrollToTop()
@@ -40,6 +40,7 @@ export class LoginComponent {
     this.userService.loginUser(user).subscribe({
       next: (res: any) => {
         this.authService.setToken(res.token)
+        localStorage.setItem('user', JSON.stringify(res.data))
         this.loginForm.reset()
         setTimeout(() => {
           this.router.navigate(['/admin'])
